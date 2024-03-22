@@ -29,8 +29,15 @@ def shift_srt_time(srt_file_path, shift_seconds, output_file_path):
             file.write(line)
 
 
+def get_meta():
+    return json.load(open("srt_shifter/meta.json", "r"))
+
+
 def get_parser():
-    parser = argparse.ArgumentParser(description="Shift srt subtitle time",)
+    meta = get_meta()
+    version = meta["version"]
+    description = meta["description"]
+    parser = argparse.ArgumentParser(description=f"{description} [v{version}]")
     parser.add_argument("input_path", type=str, help="Path to srt file")
     parser.add_argument("shift_seconds", type=float, help="Shift time in seconds")
     parser.add_argument(
@@ -40,7 +47,6 @@ def get_parser():
         help="Path to output file, default replace original file",
     )
 
-    version = json.load(open("srt_shifter/meta.json", "r"))["version"]
     parser.add_argument("-v", "--version", action="version", version=f"{version}")
     return parser
 
