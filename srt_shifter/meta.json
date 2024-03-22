@@ -1,0 +1,7 @@
+{
+    "name": "srt-shifter",
+    "version": "0.0.1",
+    "author": "sean1832",
+    "url": "https://github/sean1832/srt-shifter",
+    "description": "Shifts the time of subtitles in an srt file"
+}
